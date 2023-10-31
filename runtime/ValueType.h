@@ -5,6 +5,8 @@
 #ifndef PROGRAMMING_LANGUAGE_V2_VALUETYPE_H
 #define PROGRAMMING_LANGUAGE_V2_VALUETYPE_H
 
+#include <iostream>
+
 enum class ValueType {
     Null,
     Number,
@@ -13,22 +15,33 @@ enum class ValueType {
 class RuntimeVal {
 public:
     RuntimeVal() = default;
+    virtual ~RuntimeVal() = default;
     ValueType type;
+    virtual void print(){
+        std::cout << "Generic value" << std::endl;
+    }
 };
 
-class NullValue : RuntimeVal {
+class NullValue : public RuntimeVal {
 public:
     NullValue() : RuntimeVal(){
         type = ValueType::Null;
     }
+    void print() override {
+        std::cout << "null" << std::endl;
+    }
 };
 
-class NumberValue : RuntimeVal {
+class NumberValue : public RuntimeVal {
 public:
     NumberValue(double val) : RuntimeVal() {
+        type = ValueType::Number;
         value = val;
     }
     double value;
+    void print() override {
+        std::cout << value << std::endl;
+    }
 };
 
 #endif //PROGRAMMING_LANGUAGE_V2_VALUETYPE_H

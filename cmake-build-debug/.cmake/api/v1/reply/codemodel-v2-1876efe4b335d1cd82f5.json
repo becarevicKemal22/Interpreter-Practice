@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Programming_Language_V2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Programming_Language_V2-Debug-e54d43c2ed1559344ea3.json",
+					"jsonFile" : "target-Programming_Language_V2-Debug-2e90ca79ed19aadbf769.json",
 					"name" : "Programming_Language_V2",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/kemal/CLionProjects/Interpreter-Practice/cmake-build-debug",
-		"source" : "C:/Users/kemal/CLionProjects/Interpreter-Practice"
+		"build" : "C:/Users/kemal/CLionProjects/Programming Language V2/cmake-build-debug",
+		"source" : "C:/Users/kemal/CLionProjects/Programming Language V2"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 5
+		"minor" : 4
 	}
 }

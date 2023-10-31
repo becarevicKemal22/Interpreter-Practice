@@ -13,13 +13,8 @@ using ast::ExprPtr;
 
 typedef std::shared_ptr<RuntimeVal> RuntimeValPtr;
 
-RuntimeValPtr evaluate(ExprPtr astNode){
-    switch (astNode->kind) {
-        case NodeType::NumericLiteral: {
-            std::shared_ptr<ast::NumericLiteral> node = reinterpret_cast<std::shared_ptr<ast::NumericLiteral>>(astNode);
-            return std::make_shared<ValueType::Number>()
-        }
-    }
-}
+RuntimeValPtr evaluate_program(ast::Program program);
+RuntimeValPtr evaluate_binary_expr(std::shared_ptr<ast::BinaryExpr> binop);
+RuntimeValPtr evaluate(std::shared_ptr<ast::Stmt> astNode);
 
 #endif //PROGRAMMING_LANGUAGE_V2_INTERPRETER_H

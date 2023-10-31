@@ -3,6 +3,7 @@
 
 #include "Parser.h"
 #include "Ast.h"
+#include "./runtime/Interpreter.h"
 
 using namespace std;
 
@@ -19,8 +20,11 @@ void repl(){
         }
         ast::Program program = parser.produceAST(input);
         program.print();
-        cout << "\n" << endl;
-        program.printDebug();
+//        cout << "\n" << endl;
+//        program->printDebug();
+        std::shared_ptr<RuntimeVal> value = evaluate_program(program);
+        std::cout << std::endl << "-----------" << std::endl;
+        value->print();
     }
 }
 

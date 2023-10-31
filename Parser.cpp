@@ -20,6 +20,15 @@ Token Parser::expect(TokenType type, std::string err) {
     return prev;
 }
 
+//std::shared_ptr<ast::Program> Parser::produceAST(std::string sourceCode) {
+//    tokens = tokenize(sourceCode);
+//    std::shared_ptr<ast::Program> program;
+//    while(not_eof()){
+//        program->body.push_back(parse_stmt());
+//    }
+//    return program;
+//}
+
 ast::Program Parser::produceAST(std::string sourceCode) {
     tokens = tokenize(sourceCode);
     ast::Program program;
@@ -69,7 +78,8 @@ ExprPtr Parser::parse_primary_expr(){
             return numLiteral;
         }
         case TokenType::Null: {
-        return std::make_shared<ast::NullLiteral>();
+            eat();
+            return std::make_shared<ast::NullLiteral>();
         }
         case TokenType::OpenParen: {
             eat();

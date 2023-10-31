@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <memory>
+#include <iostream>
 #include "NodeType.h"
 
 namespace ast {
