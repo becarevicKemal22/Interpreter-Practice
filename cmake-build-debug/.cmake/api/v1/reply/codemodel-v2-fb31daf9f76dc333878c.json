@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/kemal/CLionProjects/Programming Language V2/cmake-build-debug",
-		"source" : "C:/Users/kemal/CLionProjects/Programming Language V2"
+		"build" : "C:/Users/kemal/CLionProjects/Interpreter-Practice/cmake-build-debug",
+		"source" : "C:/Users/kemal/CLionProjects/Interpreter-Practice"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 5
 	}
 }

@@ -10,7 +10,8 @@ void repl(){
     cout << "Repl v0.1" << endl;
     Parser parser;
     for(;;){
-        cout << "> ";
+
+        cout << endl << "> ";
         string input;
         getline(cin, input);
         if(input.empty()){
@@ -18,6 +19,8 @@ void repl(){
         }
         ast::Program program = parser.produceAST(input);
         program.print();
+        cout << "\n" << endl;
+        program.printDebug();
     }
 }
 

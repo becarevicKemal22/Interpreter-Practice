@@ -11,6 +11,15 @@
 
 using ast::ExprPtr;
 
+Token Parser::expect(TokenType type, std::string err) {
+    Token prev = eat();
+    if(prev.type != type){
+        std::cout << "Parser error: \n" << err << "\n";
+        exit(1);
+    }
+    return prev;
+}
+
 ast::Program Parser::produceAST(std::string sourceCode) {
     tokens = tokenize(sourceCode);
     ast::Program program;
@@ -29,11 +38,23 @@ ExprPtr Parser::parse_expr(){
 }
 
 ExprPtr Parser::parse_additive_expr() {
-    std::shared_ptr<ast::Expr> left = this->parse_primary_expr();
+    std::shared_ptr<ast::Expr> left = this->parse_multiplicative_expr();
     while(at().value == "+" || at().value == "-"){
         std::string op = eat().value;
-        std::shared_ptr<ast::Expr> right = parse_primary_expr();
+        std::shared_ptr<ast::Expr> right = parse_multiplicative_expr();
+        left = std::make_shared<ast::BinaryExpr>(left, op, right);
     }
+    return left;
+}
+
+ExprPtr Parser::parse_multiplicative_expr() {
+    std::shared_ptr<ast::Expr> left = this->parse_primary_expr();
+    while(at().value == "*" || at().value == "/" || at().value == "%"){
+        std::string op = eat().value;
+        std::shared_ptr<ast::Expr> right = parse_primary_expr();
+        left = std::make_shared<ast::BinaryExpr>(left, op, right);
+    }
+    return left;
 }
 
 ExprPtr Parser::parse_primary_expr(){
@@ -46,6 +67,12 @@ ExprPtr Parser::parse_primary_expr(){
         case TokenType::Number: {
             std::shared_ptr<ast::NumericLiteral> numLiteral = std::make_shared<ast::NumericLiteral>(std::stod(eat().value));
             return numLiteral;
+        }
+        case TokenType::OpenParen: {
+            eat();
+            std::shared_ptr<ast::Expr> contents = parse_expr();
+            expect(TokenType::CloseParen, "Unexpected token found. Expected ')'");
+            return contents;
         }
         default:
             std::cout << "Unexpected token found: " << at().value << std::endl;

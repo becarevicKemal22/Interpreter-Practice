@@ -17,6 +17,7 @@ public:
     std::shared_ptr<ast::Stmt> parse_stmt();
     std::shared_ptr<ast::Expr> parse_expr();
     std::shared_ptr<ast::Expr> parse_additive_expr();
+    std::shared_ptr<ast::Expr> parse_multiplicative_expr();
     std::shared_ptr<ast::Expr> parse_primary_expr();
 private:
     std::vector<Token> tokens = {};
@@ -31,6 +32,7 @@ private:
         tokens.erase(tokens.begin());
         return prev;
     }
+    Token expect(TokenType type, std::string err);
 };
 
 

@@ -22,6 +22,9 @@ namespace ast {
         virtual void print(){
             std::cout << "Generic Statement!" << std::endl;
         }
+        virtual void printDebug(){
+            std::cout << "Generic Statement!" << std::endl;
+        }
     };
 
     class Program : public Stmt {
@@ -35,6 +38,12 @@ namespace ast {
             std::cout << "Printing AST" << std::endl;
             for(auto stmtPtr : body){
                 stmtPtr->print();
+            }
+        }
+        void printDebug() override{
+            std::cout << "[Debug] Printing AST" << std::endl;
+            for(auto stmtPtr : body){
+                stmtPtr->printDebug();
             }
         }
     };
@@ -51,6 +60,9 @@ namespace ast {
         void print() override {
             std::cout << "Generic statement!" << std::endl;
         }
+        void printDebug() override {
+            std::cout << "Generic statement!" << std::endl;
+        }
     };
 
     class BinaryExpr : public Expr {
@@ -63,6 +75,18 @@ namespace ast {
         }
         ExprPtr left{}, right{};
         std::string _operator;
+        void print() override{
+            std::cout << "( " << _operator << " ";
+            left->print();
+            right->print();
+            std::cout << ") ";
+        }
+        void printDebug() override{
+            std::cout << "[BinaryExpr] ( " << _operator << " ";
+            left->printDebug();
+            right->printDebug();
+            std::cout << " ) ";
+        }
     };
 
     class Identifier : public Expr {
@@ -73,7 +97,10 @@ namespace ast {
         }
         std::string symbol;
         void print() override{
-            std::cout << "[Identifier] " << symbol << " " << std::endl;
+            std::cout << symbol << " ";
+        }
+        void printDebug() override{
+            std::cout << "[Identifier] " << symbol << " ";
         }
     };
 
@@ -85,7 +112,10 @@ namespace ast {
         }
         double number;
         void print() override{
-            std::cout << "[NumLiteral] " << number << std::endl;
+            std::cout << number << " ";
+        }
+        void printDebug() override{
+            std::cout << "[NumLiteral] " << number << " ";
         }
     };
 
