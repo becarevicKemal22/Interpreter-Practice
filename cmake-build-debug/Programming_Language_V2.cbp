@@ -106,6 +106,12 @@
 		<Unit filename="C:/Users/kemal/CLionProjects/Interpreter-Practice/main.cpp">
 			<Option target="Programming_Language_V2"/>
 		</Unit>
+		<Unit filename="C:/Users/kemal/CLionProjects/Interpreter-Practice/runtime/Interpreter.h">
+			<Option target="Programming_Language_V2"/>
+		</Unit>
+		<Unit filename="C:/Users/kemal/CLionProjects/Interpreter-Practice/runtime/ValueType.h">
+			<Option target="Programming_Language_V2"/>
+		</Unit>
 		<Unit filename="C:/Users/kemal/CLionProjects/Interpreter-Practice/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

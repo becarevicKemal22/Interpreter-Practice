@@ -119,12 +119,18 @@ namespace ast {
         }
     };
 
-//    class NullLiteral : public Expr {
-//    public:
-//        NullLiteral() : Expr(){
-//            kind = NodeType::NullLiteral;
-//        }
-//    };
+    class NullLiteral : public Expr {
+    public:
+        NullLiteral() : Expr(){
+            kind = NodeType::NullLiteral;
+        }
+        void print() override {
+            std::cout << "null ";
+        }
+        void printDebug() override{
+            std::cout << "[NullLiteral] null ";
+        }
+    };
 }
 
 #endif //PROGRAMMING_LANGUAGE_V2_AST_H

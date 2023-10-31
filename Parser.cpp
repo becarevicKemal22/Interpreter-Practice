@@ -68,6 +68,9 @@ ExprPtr Parser::parse_primary_expr(){
             std::shared_ptr<ast::NumericLiteral> numLiteral = std::make_shared<ast::NumericLiteral>(std::stod(eat().value));
             return numLiteral;
         }
+        case TokenType::Null: {
+        return std::make_shared<ast::NullLiteral>();
+        }
         case TokenType::OpenParen: {
             eat();
             std::shared_ptr<ast::Expr> contents = parse_expr();
